@@ -1,5 +1,7 @@
 package com.lxy.stuinfomp.commons.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lxy.stuinfomp.commons.dto.AbstractBaseDomain;
 import com.lxy.stuinfomp.commons.service.BaseCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,15 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper
         if (result > 0){
             return domain;
         }
+        return null;
+    }
+
+    @Override
+    public PageInfo<T> page(T domain, int pageNum, int pageSize) {
+        Example example = new Example(entityClass);
+        example.createCriteria().andEqualTo(domain);
+        PageHelper.startPage(pageNum,pageSize);
+        PageInfo<T> pageInfo = new PageInfo<>(mapper.selectByExample(example));
         return null;
     }
 }

@@ -1,5 +1,6 @@
 package com.lxy.stuinfomp.commons.service;
 
+import com.github.pagehelper.PageInfo;
 import com.lxy.stuinfomp.commons.dto.AbstractBaseDomain;
 
 /**
@@ -23,6 +24,17 @@ public interface BaseCrudService<T extends AbstractBaseDomain> {
      * @return
      */
     default T save(T domain){
+        return null;
+    }
+
+    /**
+     * 分页查询
+     * @param domain
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    default PageInfo<T> page(T domain,int pageNum,int pageSize){
         return null;
     }
 }
