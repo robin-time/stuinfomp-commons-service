@@ -7,6 +7,7 @@ import tk.mybatis.mapper.MyMapper;
 import tk.mybatis.mapper.entity.Example;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Date;
 
 public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper<T>> implements BaseCrudService<T> {
 
@@ -27,5 +28,24 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper
             return false;
         }
         return true;
+    }
+
+    @Override
+    public T save(T domain) {
+        int result = 0;
+        Date currentDate = new Date();
+        domain.setGmtModified(currentDate);
+
+        //id是空，判断是创建；不是空就是更新
+        if (domain.getId() == null){
+            domain.setGmtCreated(currentDate);
+            result = mapper.insertUseGeneratedKeys(domain);
+        }else {
+            result = mapper.updateByPrimaryKey(domain);
+        }
+        if (result > 0){
+            return domain;
+        }
+        return null;
     }
 }

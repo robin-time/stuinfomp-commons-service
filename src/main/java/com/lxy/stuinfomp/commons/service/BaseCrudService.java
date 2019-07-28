@@ -16,4 +16,13 @@ public interface BaseCrudService<T extends AbstractBaseDomain> {
     default boolean unique(String property,String value){
         return false;
     }
+
+    /**
+     * 保存
+     * @param domain
+     * @return
+     */
+    default T save(T domain){
+        return null;
+    }
 }
