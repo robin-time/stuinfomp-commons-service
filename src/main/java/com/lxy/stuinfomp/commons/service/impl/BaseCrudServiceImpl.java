@@ -43,7 +43,7 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper
             domain.setGmtCreated(currentDate);
             result = mapper.insertUseGeneratedKeys(domain);
         }else {
-            result = mapper.updateByPrimaryKey(domain);
+            result = mapper.updateByPrimaryKeySelective(domain);
         }
         if (result > 0){
             return domain;
@@ -57,6 +57,17 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper
         example.createCriteria().andEqualTo(domain);
         PageHelper.startPage(pageNum,pageSize);
         PageInfo<T> pageInfo = new PageInfo<>(mapper.selectByExample(example));
+        return pageInfo;
+    }
+
+    @Override
+    public T deleteById(T domain, Long stuId) {
+        domain.setId(stuId);
+        domain.setIsDelete('1');
+        int result = mapper.updateByPrimaryKeySelective(domain);
+        if (result > 0){
+            return domain;
+        }
         return null;
     }
 }

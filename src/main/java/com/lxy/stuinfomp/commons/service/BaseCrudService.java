@@ -19,7 +19,7 @@ public interface BaseCrudService<T extends AbstractBaseDomain> {
     }
 
     /**
-     * 保存
+     * 保存、更新
      * @param domain
      * @return
      */
@@ -37,4 +37,15 @@ public interface BaseCrudService<T extends AbstractBaseDomain> {
     default PageInfo<T> page(T domain,int pageNum,int pageSize){
         return null;
     }
+
+
+    /**
+     * 这个是逻辑删除，更新isdelete的状态。
+     * @param domain
+     * @return
+     */
+    default T deleteById(T domain, Long stuId){
+        return null;
+    }
+
 }
