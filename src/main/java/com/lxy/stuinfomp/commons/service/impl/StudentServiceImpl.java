@@ -6,6 +6,9 @@ import com.lxy.stuinfomp.commons.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author lxy
+ */
 @Service
 public class StudentServiceImpl extends BaseCrudServiceImpl<Students, StudentsMapper> implements StudentService {
 
@@ -13,6 +16,7 @@ public class StudentServiceImpl extends BaseCrudServiceImpl<Students, StudentsMa
     private StudentsMapper studentsMapper;
 
 
+    @Override
     public Long selectMaxId() {
         return studentsMapper.selectStudentMaxId();
     }

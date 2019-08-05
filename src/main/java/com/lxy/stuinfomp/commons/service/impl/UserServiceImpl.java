@@ -5,6 +5,9 @@ import com.lxy.stuinfomp.commons.mapper.UsersMapper;
 import com.lxy.stuinfomp.commons.service.UserService;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author lxy
+ */
 @Service
 public class UserServiceImpl extends BaseCrudServiceImpl<Users,UsersMapper> implements UserService {
 }

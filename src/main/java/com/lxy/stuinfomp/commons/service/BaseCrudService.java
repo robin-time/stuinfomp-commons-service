@@ -5,6 +5,7 @@ import com.lxy.stuinfomp.commons.dto.AbstractBaseDomain;
 
 /**
  * 通用的业务逻辑
+ * @author lxy
  */
 public interface BaseCrudService<T extends AbstractBaseDomain> {
 
@@ -48,4 +49,12 @@ public interface BaseCrudService<T extends AbstractBaseDomain> {
         return null;
     }
 
+
+//    /**
+//     * 查询最大id值
+//     * @return
+//     */
+//    default Long selectMaxId(){
+//        return null;
+//    }
 }

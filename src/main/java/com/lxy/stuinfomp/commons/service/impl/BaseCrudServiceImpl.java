@@ -11,6 +11,9 @@ import tk.mybatis.mapper.entity.Example;
 import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 
+/**
+ * @author lxy
+ */
 public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper<T>> implements BaseCrudService<T> {
 
     @Autowired
@@ -70,4 +73,5 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper
         }
         return null;
     }
+
 }
