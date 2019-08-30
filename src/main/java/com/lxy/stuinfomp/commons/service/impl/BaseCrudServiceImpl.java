@@ -66,7 +66,7 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper
     @Override
     public T deleteById(T domain, Long stuId) {
         domain.setId(stuId);
-        domain.setIsDelete(1);
+        domain.setIsDeleted(1);
         int result = mapper.updateByPrimaryKeySelective(domain);
         if (result > 0){
             return domain;
